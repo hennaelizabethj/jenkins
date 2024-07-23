@@ -1,4 +1,6 @@
-FROM httpd:2.4
-
-# Copy custom configuration file to the Apache server
-COPY ./my-httpd.conf /usr/local/apache2/conf/httpd.conf
+FROM ubuntu
+RUN apt update && apt upgrade -y
+RUN apt install apache2 -y
+EXPOSE 80
+#CMD [“apache2ctl”, “-D”, “FOREGROUND”i]
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
